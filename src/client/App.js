@@ -1,8 +1,8 @@
 import * as React from "react"
 
-const App = (
+const App = () => (
   <p>
-    <button type="button" onClick={() => alert("fuck off")}>
+    <button type="button" onClick={() => alert("This is a message !")}>
       Click Me
     </button>
     <br />

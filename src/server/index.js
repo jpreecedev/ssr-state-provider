@@ -8,7 +8,8 @@ import { renderToString } from "react-dom/server"
 import App from "../client/App"
 
 import { StateProvider, StateConsumer } from "./state-provider"
-import Html from "../client/HTML"
+
+app.use(express.static("./dist/client"))
 
 app.engine("ejs", require("ejs").__express)
 
@@ -26,20 +27,13 @@ app.set("view engine", "ejs")
 //   </StateProvider>
 // )
 
-const body = renderToString(App)
-const title = "Foo bar buzz"
+const body = renderToString(<App />)
 
 // index page
 app.get("/", function(req, res) {
-  res.send(
-    Html({
-      body,
-      title
-    })
-  )
-  // res.render("pages/index", {
-  //   reactAppCode:
-  // })
+  res.render("pages/index", {
+    reactAppCode: body
+  })
 })
 
 app.listen(3002)
