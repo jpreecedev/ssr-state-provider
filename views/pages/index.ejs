@@ -11,6 +11,11 @@
 <body>
   <div id="root"><%- reactAppCode %></div>
 
+  <script>
+    window.__GLOBAL_STATE__ = window.__GLOBAL_STATE__ || {};
+    window.__GLOBAL_STATE__.anotherGuysName = "<%= anotherGuysName %>";
+  </script>
+
   <script src="/main.js"></script>
 </body>
 

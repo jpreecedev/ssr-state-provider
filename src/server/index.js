@@ -5,9 +5,7 @@ var app = express()
 import React from "react"
 import { renderToString } from "react-dom/server"
 
-import App from "../client/App"
-
-import { StateProvider, StateConsumer } from "./state-provider"
+import OuterApp from "../client/OuterApp"
 
 app.use(express.static("./dist/client"))
 
@@ -15,24 +13,19 @@ app.engine("ejs", require("ejs").__express)
 
 app.set("view engine", "ejs")
 
-// const markup = (
-//   <StateProvider>
-//     <p>
-//       <StateConsumer>
-//         {({ globalState }) => {
-//           return <p>Your name is: {globalState.yourName}</p>
-//         }}
-//       </StateConsumer>
-//     </p>
-//   </StateProvider>
-// )
+const context = {
+  anotherGuysName: "Jon"
+}
 
-const body = renderToString(<App />)
+const Markup = () => <OuterApp {...context} />
+
+const body = renderToString(<Markup />)
 
 // index page
 app.get("/", function(req, res) {
   res.render("pages/index", {
-    reactAppCode: body
+    reactAppCode: body,
+    ...context
   })
 })
 

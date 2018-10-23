@@ -1,6 +1,6 @@
 import React from "react"
 import { hydrate } from "react-dom"
 
-import App from "./App"
+import OuterApp from "./OuterApp"
 
-hydrate(<App />, document.getElementById("root"))
+hydrate(<OuterApp />, document.getElementById("root"))

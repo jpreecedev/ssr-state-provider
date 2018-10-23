@@ -20,6 +20,7 @@ export class StateProvider extends React.Component {
     super(props)
 
     this.state = {
+      ...global.__GLOBAL_STATE__,
       ...props.value
     }
   }
