@@ -19,6 +19,12 @@ export class StateProvider extends React.Component {
   constructor(props) {
     super(props)
 
+    if (global.addEventListener) {
+      global.addEventListener(STATE_CHANGED, ({ detail }) =>
+        this.setState(detail)
+      )
+    }
+
     this.state = {
       ...global.__GLOBAL_STATE__,
       ...props.value
