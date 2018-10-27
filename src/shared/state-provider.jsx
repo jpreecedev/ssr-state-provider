@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle, no-multi-assign */
+
 import * as React from "react"
 
 global.__GLOBAL_STATE__ = global.__GLOBAL_STATE__ || {}

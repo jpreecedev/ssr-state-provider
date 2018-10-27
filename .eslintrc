@@ -12,10 +12,11 @@
     "browser": true,
     "jest/globals": true
   },
-  "plugins": [
-    "jest"
-  ],
-  "extends": [
-    "prettier"
-  ]
+  "plugins": ["jest"],
+  "extends": ["airbnb", "prettier", "plugin:jest/recommended"],
+  "rules": {
+    "react/prop-types": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-named-as-default"
+  }
 }

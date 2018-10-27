@@ -1,10 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const { resolve } = require("path")
+const merge = require("webpack-merge")
+const common = require("./webpack.common")
 
-module.exports = {
+module.exports = merge(common, {
   mode: "development",
   entry: {
-    main: resolve("./src/client/index.js")
+    main: resolve("./src/client/index.jsx")
   },
   output: {
     filename: "./client/[name].js"
@@ -12,13 +13,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1
+            }
+          },
+          "postcss-loader"
+        ]
       }
     ]
-  },
-  resolve: {
-    extensions: [".js"]
   }
-}
+})

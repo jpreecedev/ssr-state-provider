@@ -1,5 +1,7 @@
+/* eslint-disable react/prefer-stateless-function */
+
 import * as React from "react"
-import { StateConsumer } from "../server/state-provider"
+import { StateConsumer } from "./state-provider"
 
 const withContext = mapStateToProps => Component => {
   class WithContext extends React.Component {
